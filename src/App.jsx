@@ -1,3 +1,4 @@
+import { Box } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import ChatListItem from './components/MenuListItem';
@@ -6,27 +7,27 @@ const App = () => {
 	const [menuList, setMenuList] = useState([{}, {}, {}, {}]);
 
 	return (
-		<div className="app-window">
-			<div className="sidebar">
-				<header>
+		<Box className="app-window">
+			<Box className="sidebar">
+				<Box>
 					<img
 						src="https://www.w3schools.com/howto/img_avatar2.png"
 						alt="avatar"
 						className="header--avatar"
 					/>
-					<div className="header--buttons">...</div>
-				</header>
+					<Box className="header--buttons">...</Box>
+				</Box>
 
-				<div className="menulist">
+				<Box className="menulist">
 					{menuList.map((item, key) => (
-						<div>
+						<Box>
 							<ChatListItem key={key} />
-						</div>
+						</Box>
 					))}
-				</div>
-			</div>
-			<div className="contentarea">Conteudo</div>
-		</div>
+				</Box>
+			</Box>
+			<Box className="contentarea">Conteudo</Box>
+		</Box>
 	);
 };
 
