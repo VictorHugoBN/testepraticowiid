@@ -22,7 +22,7 @@ const HeaderLeft = () => {
 		setAnchorEl(null);
 	};
 	return (
-		<Box>
+		<>
 			<Button variant="text" onClick={handleOpenMenu}>
 				<Avatar
 					style={{ cursor: 'pointer' }}
@@ -39,7 +39,7 @@ const HeaderLeft = () => {
 			>
 				<MenuItem onClick={handleOpenMenu}>Logout</MenuItem>
 			</Menu>
-		</Box>
+		</>
 	);
 };
 

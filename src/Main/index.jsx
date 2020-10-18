@@ -16,12 +16,12 @@ import {
 	TextField,
 } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import './App.css';
+
 import HeaderLeft from './components/HeaderLeft';
 import HeaderRight from './components/HeaderRight';
 import MenuTree from './components/MenuTree';
 
-const App = () => {
+const Main = () => {
 	const [menuList, setMenuList] = useState([{}, {}, {}]);
 
 	const useStyles = makeStyles((theme) => ({
@@ -41,7 +41,7 @@ const App = () => {
 			padding: '10px',
 		},
 		rightContainer: {
-			padding: '10px',
+			padding: '50px',
 		},
 		menuTree: {
 			margin: '5px',
@@ -103,13 +103,14 @@ const App = () => {
 					<form noValidate autoComplete="off">
 						<TextField fullWidth="true" label="Pesquisa" variant="outlined" />
 					</form>
+
 					<HeaderRight />
 				</Box>
 
-				<Box className={styles.rightContentArea}>oi tudo bem </Box>
+				<Box className={styles.rightContentArea}>oi tudo bem</Box>
 			</Grid>
 		</Grid>
 	);
 };
 
-export default App;
+export default Main;
