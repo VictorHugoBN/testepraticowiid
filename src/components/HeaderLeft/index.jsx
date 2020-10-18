@@ -1,4 +1,14 @@
-import { Avatar, Box, Button, Menu, MenuItem } from '@material-ui/core';
+import {
+	Avatar,
+	Box,
+	Button,
+	FormControl,
+	InputLabel,
+	Menu,
+	MenuItem,
+	Select,
+	Typography,
+} from '@material-ui/core';
 import React, { useState } from 'react';
 
 const HeaderLeft = () => {

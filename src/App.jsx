@@ -4,7 +4,10 @@ import {
 	Button,
 	Container,
 	Divider,
+	FormControl,
 	Grid,
+	List,
+	ListSubheader,
 	makeStyles,
 	Menu,
 	MenuItem,
@@ -17,7 +20,7 @@ import HeaderLeft from './components/HeaderLeft';
 import MenuTree from './components/MenuTree';
 
 const App = () => {
-	const [menuList, setMenuList] = useState([{}, {}, {}, {}]);
+	const [menuList, setMenuList] = useState([{}, {}, {}]);
 
 	const useStyles = makeStyles((theme) => ({
 		root: {
@@ -31,31 +34,66 @@ const App = () => {
 		leftHeader: {
 			display: 'flex',
 			justifyContent: 'space-between',
+			alignItems: 'center',
 			padding: '10px',
 		},
 		rightContainer: {},
+		menuTree: {
+			margin: '5px',
+		},
 	}));
 	const styles = useStyles();
 
 	return (
 		<Grid container className={styles.root}>
-			<Grid container item className={styles.leftContainer} xs={3} direction="column">
+			<Grid
+				container
+				item
+				className={styles.leftContainer}
+				xs={3}
+				direction="column"
+			>
 				{/* Inicio do Header */}
+
 				<Box className={styles.leftHeader}>
 					<HeaderLeft />
-					<Button variant="outlined">New</Button>
+					<FormControl>
+						<Select native variant="standard">
+							<option>New</option>
+						</Select>
+					</FormControl>
 				</Box>
 				<Divider style={{ margin: '3px' }} />
+
 				{/* Final do Header */}
+
 				{/* Inicio do MenuList */}
+
 				<Box className={styles.menuTree}>
-					<MenuTree />
+					<List
+						component="nav"
+						subheader={
+							<ListSubheader component="div">
+								Favoritos{' '}
+							</ListSubheader>
+						}
+					>
+						{menuList.map((menuItem, key) => (
+							<MenuTree />
+						))}
+					</List>
 				</Box>
 
-				{/* Final do Meunilist */}
+				{/* Final do Meunulist */}
 			</Grid>
 
-			<Grid container item className={styles.rightContainer} xs={9} direction="column">
+			<Grid
+				container
+				item
+				className={styles.rightContainer}
+				xs={9}
+				direction="column"
+			>
 				bbbb
 			</Grid>
 		</Grid>
