@@ -16,22 +16,22 @@ import {
 	TextField,
 } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-
-import HeaderLeft from './components/HeaderLeft';
-import HeaderRight from './components/HeaderRight';
-import MenuTree from './components/MenuTree';
+import HeaderLeft from '../../components/HeaderLeft';
+import './style.css';
+import HeaderRight from '../../components/HeaderRight';
+import MenuTree from '../../components/MenuTree';
 
 const Main = () => {
 	const [menuList, setMenuList] = useState([{}, {}, {}]);
 
 	const useStyles = makeStyles((theme) => ({
 		root: {
-			backgroundColor: '#d2dbdc',
+			backgroundColor: '#fff',
 			width: '100vw',
 			height: '100vh',
 		},
 		leftContainer: {
-			backgroundColor: '#ccc',
+			backgroundColor: '#f4f4f4',
 			width: '100vw',
 		},
 		leftHeader: {
@@ -41,7 +41,7 @@ const Main = () => {
 			padding: '10px',
 		},
 		rightContainer: {
-			padding: '50px',
+			padding: '10px',
 		},
 		menuTree: {
 			margin: '5px',
@@ -103,11 +103,10 @@ const Main = () => {
 					<form noValidate autoComplete="off">
 						<TextField fullWidth="true" label="Pesquisa" variant="outlined" />
 					</form>
-
 					<HeaderRight />
 				</Box>
 
-				<Box className={styles.rightContentArea}>oi tudo bem</Box>
+				<Box className={styles.rightContentArea}>oi tudo bem </Box>
 			</Grid>
 		</Grid>
 	);
