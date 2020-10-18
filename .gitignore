@@ -12,6 +12,10 @@
 # production
 /build
 
+#ignorefiles
+/src/Untitled-1.jsx
+/src/Untitled-2.css
+
 # misc
 .DS_Store
 .env.local
