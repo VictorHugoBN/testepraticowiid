@@ -2,7 +2,7 @@ import { Box, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import React, { useState } from 'react';
 import './App.css';
 import Main from './Pages/Main/Main';
-import Login from './Pages/Login';
+import Login from './Pages/Login/Login';
 
 const getMuiTheme = () =>
 	createMuiTheme({

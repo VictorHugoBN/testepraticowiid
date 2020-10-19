@@ -17,9 +17,9 @@ import {
 	TextField,
 } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import HeaderLeft from '../../components/HeaderLeft';
+import HeaderLeft from '../../components/HeaderLeft/HeaderLeft';
 import './style.css';
-import HeaderRight from '../../components/HeaderRight';
+import HeaderRight from '../../components/HeaderRight/HeaderRight';
 import MenuTree from '../../components/MenuTree/MenuTree';
 import SubMenuItens from '../../components/SubMenuItems/SubMenuItem';
 import { getAllInboxItem, getSideBarItems } from '../../services/services';
