@@ -14,6 +14,7 @@ import {
 	MenuItem,
 	MenuList,
 	Select,
+	Switch,
 	TextField,
 } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
@@ -24,15 +25,16 @@ import MenuTree from '../../components/MenuTree/MenuTree';
 import SubMenuItens from '../../components/SubMenuItems/SubMenuItem';
 import { getAllInboxItem, getSideBarItems } from '../../services/services';
 import SubMenuItems from '../../components/SubMenuItems/SubMenuItems';
+import { dark } from '@material-ui/core/styles/createPalette';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		backgroundColor: '#fff',
+		backgroundColor: theme.palette.type,
 		width: '100vw',
 		height: '100vh',
 	},
 	leftContainer: {
-		backgroundColor: '#f4f4f4',
+		backgroundColor: theme.palette.type,
 		width: '100vw',
 	},
 	leftHeader: {
@@ -44,17 +46,17 @@ const useStyles = makeStyles((theme) => ({
 	rightContainer: {
 		padding: '10px',
 	},
-	menuTree: {
-		margin: '5px',
-	},
+	menuTree: {},
 	rightHeader: {
-		padding: '10px',
+		display: 'flex',
+		flexDirection: 'column',
 	},
 	rightContentArea: {},
 }));
 
-const Main = () => {
+const Main = ({ handleDarkMode }) => {
 	const styles = useStyles();
+	const [switchDarkMode, setSwitchDarkMode] = useState(false);
 
 	const [selectedId, setSelectedId] = useState(11);
 
@@ -104,6 +106,15 @@ const Main = () => {
 					<form noValidate autoComplete="off">
 						<TextField fullWidth="true" label="Pesquisa" variant="outlined" />
 					</form>
+					<Box display="flex" justifyContent="flex-end">
+						<Switch
+							checked={switchDarkMode}
+							onChange={() => {
+								setSwitchDarkMode(!switchDarkMode);
+								return handleDarkMode(!switchDarkMode);
+							}}
+						/>
+					</Box>
 					<HeaderRight />
 					<SubMenuItems id={selectedId} />
 				</Box>
