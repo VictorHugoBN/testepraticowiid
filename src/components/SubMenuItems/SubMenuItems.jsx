@@ -21,9 +21,11 @@ const SubMenuItems = ({ id }) => {
 	}, [id]);
 
 	return (
-		<Box width="100%">
+		<Box width="100%" height="100%" alignItems="center" justifyContent="center">
 			{loadingMenuItems ? (
-				<CircularProgress />
+				<Box display="flex" justifyContent="center" alignItems="center">
+					<CircularProgress size={80} />
+				</Box>
 			) : (
 				subMenuItens.map((item, key) => <SubMenuItens row={item} />)
 			)}

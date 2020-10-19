@@ -103,10 +103,13 @@ const Main = ({ handleDarkMode }) => {
 				direction="column"
 			>
 				<Box className={styles.rightHeader}>
-					<form noValidate autoComplete="off">
+					<Box
+						display="flex"
+						justifyContent="space-between"
+						alignItems="center"
+					>
 						<TextField fullWidth="true" label="Pesquisa" variant="outlined" />
-					</form>
-					<Box display="flex" justifyContent="flex-end">
+
 						<Switch
 							checked={switchDarkMode}
 							onChange={() => {
@@ -115,6 +118,7 @@ const Main = ({ handleDarkMode }) => {
 							}}
 						/>
 					</Box>
+
 					<HeaderRight />
 					<SubMenuItems id={selectedId} />
 				</Box>
