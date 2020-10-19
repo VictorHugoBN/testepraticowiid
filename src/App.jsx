@@ -1,41 +1,22 @@
-import {
-	Box,
-	createMuiTheme,
-	MuiThemeProvider,
-	Paper,
-} from '@material-ui/core';
+import { MuiThemeProvider, Paper } from '@material-ui/core';
 import React, { useState } from 'react';
 import './App.css';
 import Main from './Pages/Main/Main';
 import Login from './Pages/Login/Login';
-import { dark } from '@material-ui/core/styles/createPalette';
+import getMuiTheme from './constants/theme';
 
 const App = () => {
 	const [isAutenticaded, setIsAutenticaded] = useState(true);
 	const [darkMode, setDarkMode] = useState(false);
 
-	const getMuiTheme = createMuiTheme({
-		typography: {
-			fontFamily: 'Roboto',
-		},
-		palette: {
-			type: darkMode ? 'dark' : 'light',
-			primary: {
-				main: '#0078d4',
-			},
-			secondary: {
-				main: '#d45c00',
-			},
-		},
-	});
-
 	return (
-		<MuiThemeProvider theme={getMuiTheme}>
+		<MuiThemeProvider theme={getMuiTheme(darkMode)}>
 			<Paper>
 				{isAutenticaded ? (
 					<Main
-						handleDarkMode={(darkMode) => {
-							return setDarkMode(darkMode);
+						darkMode={darkMode}
+						handleDarkMode={() => {
+							setDarkMode(!darkMode);
 						}}
 					/>
 				) : (

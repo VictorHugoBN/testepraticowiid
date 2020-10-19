@@ -11,9 +11,10 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import React, { useEffect, useState } from 'react';
 import { getSideBarItems } from '../../services/services';
 
-const MenuTree = ({ handleMenuItemChange }) => {
+const MenuTree = ({ handleChangeInbox }) => {
 	const [open, setOpen] = useState(0);
 	const [menuList, setMenuList] = useState([]);
+
 	const loadMenuList = async () => {
 		const response = await getSideBarItems();
 		setMenuList(response.data);
@@ -37,27 +38,28 @@ const MenuTree = ({ handleMenuItemChange }) => {
 			>
 				{menuList.map((item, key) => (
 					<>
-						<ListItem button onClick={() => handleClick(key)}>
+						<ListItem key={key} button onClick={() => handleClick(key)}>
 							<ListItemIcon>
 								<InboxIcon />
 							</ListItemIcon>
 							<ListItemText primary={item.name} />
-							{open == key ? <ExpandLess /> : <ExpandMore />}
+							{open === key ? <ExpandLess /> : <ExpandMore />}
 						</ListItem>
-						<Collapse in={open == key} timeout="auto" unmountOnExit>
+						<Collapse in={open === key} timeout="auto" unmountOnExit>
 							<List component="div" disablePadding>
-								{item.subMenus.map((subMenu, key) => (
+								{item.subMenus.map((subMenu) => (
 									<ListItem
+										key={subMenu.id}
 										button
 										onClick={() => {
-											handleMenuItemChange(subMenu.id);
+											handleChangeInbox(subMenu.id);
 										}}
 									>
 										<ListItemIcon>
 											<StarBorder />
 										</ListItemIcon>
 
-										<ListItemText primary={subMenu.name} key={subMenu.id} />
+										<ListItemText primary={subMenu.name} />
 									</ListItem>
 								))}
 							</List>

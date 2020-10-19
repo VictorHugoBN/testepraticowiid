@@ -1,31 +1,19 @@
 import {
-	Avatar,
 	Box,
-	Button,
-	CircularProgress,
-	Container,
 	Divider,
 	FormControl,
 	Grid,
-	List,
-	ListSubheader,
 	makeStyles,
-	Menu,
-	MenuItem,
-	MenuList,
 	Select,
 	Switch,
 	TextField,
 } from '@material-ui/core';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import HeaderLeft from '../../components/HeaderLeft/HeaderLeft';
-import './style.css';
-import HeaderRight from '../../components/HeaderRight/HeaderRight';
 import MenuTree from '../../components/MenuTree/MenuTree';
-import SubMenuItens from '../../components/SubMenuItems/SubMenuItem';
-import { getAllInboxItem, getSideBarItems } from '../../services/services';
 import SubMenuItems from '../../components/SubMenuItems/SubMenuItems';
-import { dark } from '@material-ui/core/styles/createPalette';
+import HeaderRight from '../../components/HeaderRight/HeaderRight';
+import { LABEL_PESQUISA, LANGUAGES } from '../../constants/languages';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -54,11 +42,22 @@ const useStyles = makeStyles((theme) => ({
 	rightContentArea: {},
 }));
 
-const Main = ({ handleDarkMode }) => {
+const Main = ({ handleDarkMode, darkMode }) => {
 	const styles = useStyles();
-	const [switchDarkMode, setSwitchDarkMode] = useState(false);
+	const [subMenuItens, setSubMenuItens] = useState([]);
+	const [language, setLanguage] = useState(LANGUAGES.PTBR);
+	const [selectedInboxId, setSelectedInboxId] = useState(11);
+	const [selectedRowsIds, setSelectedRowsIds] = useState([]);
 
-	const [selectedId, setSelectedId] = useState(11);
+	const onArchive = () => {
+		setSubMenuItens(
+			subMenuItens.filter((item) => !selectedRowsIds.includes(item.id))
+		);
+	};
+
+	const handleChangeInbox = (id) => {
+		setSelectedInboxId(id);
+	};
 
 	return (
 		<Grid container className={styles.root}>
@@ -68,32 +67,24 @@ const Main = ({ handleDarkMode }) => {
 				xs={3}
 				direction="column"
 			>
-				{/* Inicio do Header da esquerda */}
-
 				<Box className={styles.leftHeader}>
 					<HeaderLeft />
-					<FormControl>
-						<Select native variant="standard">
-							<option>New</option>
-						</Select>
-					</FormControl>
+					<Select
+						variant="standard"
+						value={language}
+						onChange={(e) => setLanguage(e.target.value)}
+					>
+						{Object.values(LANGUAGES).map((item) => (
+							<option value={item}> {item} </option>
+						))}
+					</Select>
 				</Box>
-				<Divider style={{ margin: '3px' }} />
-
-				{/* Final do Header  da esquerda */}
-
-				{/* Inicio do MenuList */}
-
+				<Box mx={2}>
+					<Divider />
+				</Box>
 				<Box className={styles.menuTree}>
-					<MenuTree
-						handleMenuItemChange={(id) => {
-							console.log(id);
-							setSelectedId(id);
-						}}
-					/>
+					<MenuTree handleChangeInbox={handleChangeInbox} />
 				</Box>
-
-				{/* Final do Meunulist */}
 			</Grid>
 
 			<Grid
@@ -108,19 +99,35 @@ const Main = ({ handleDarkMode }) => {
 						justifyContent="space-between"
 						alignItems="center"
 					>
-						<TextField fullWidth="true" label="Pesquisa" variant="outlined" />
-
-						<Switch
-							checked={switchDarkMode}
-							onChange={() => {
-								setSwitchDarkMode(!switchDarkMode);
-								return handleDarkMode(!switchDarkMode);
-							}}
-						/>
+						<Box width="90%">
+							<TextField
+								size="small"
+								fullWidth
+								label={LABEL_PESQUISA[language]}
+								variant="outlined"
+							/>
+						</Box>
+						<Switch checked={darkMode} onChange={handleDarkMode} />
+						<Select
+							variant="standard"
+							value={language}
+							onChange={(e) => setLanguage(e.target.value)}
+						>
+							{Object.values(LANGUAGES).map((item) => (
+								<option value={item}> {item} </option>
+							))}
+						</Select>
 					</Box>
 
-					<HeaderRight />
-					<SubMenuItems id={selectedId} />
+					<HeaderRight onArchive={onArchive} />
+
+					<SubMenuItems
+						id={selectedInboxId}
+						selectedRowsIds={selectedRowsIds}
+						setSelectedRowsIds={setSelectedRowsIds}
+						subMenuItens={subMenuItens}
+						setSubMenuItens={setSubMenuItens}
+					/>
 				</Box>
 			</Grid>
 		</Grid>

@@ -2,16 +2,21 @@ import { Box, CircularProgress } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { getAllInboxItem } from '../../services/services';
-import SubMenuItens from './SubMenuItem';
+import SubMenuItem from './SubMenuItem';
 
-const SubMenuItems = ({ id }) => {
-	const [loadingMenuItems, setloadingMenuItems] = useState(true);
-	const [subMenuItens, setSubMenuItens] = useState([]);
+const SubMenuItems = ({
+	id,
+	selectedRowsIds,
+	setSelectedRowsIds,
+	setSubMenuItens,
+	subMenuItens,
+}) => {
+	const [loading, setLoading] = useState(true);
 
 	const loadInbox = async () => {
-		setloadingMenuItems(true);
+		setLoading(true);
 		const response = await getAllInboxItem(id);
-		setloadingMenuItems(false);
+		setLoading(false);
 
 		setSubMenuItens(response.data.subMenuItems);
 	};
@@ -22,12 +27,18 @@ const SubMenuItems = ({ id }) => {
 
 	return (
 		<Box width="100%" height="100%" alignItems="center" justifyContent="center">
-			{loadingMenuItems ? (
+			{loading ? (
 				<Box display="flex" justifyContent="center" alignItems="center">
 					<CircularProgress size={80} />
 				</Box>
 			) : (
-				subMenuItens.map((item, key) => <SubMenuItens row={item} />)
+				subMenuItens.map((item) => (
+					<SubMenuItem
+						row={item}
+						selectedRowsIds={selectedRowsIds}
+						setSelectedRowsIds={setSelectedRowsIds}
+					/>
+				))
 			)}
 		</Box>
 	);

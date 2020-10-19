@@ -1,28 +1,53 @@
-import { Box, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import { Box, Checkbox, makeStyles } from '@material-ui/core';
+import React, { useState } from 'react';
 import UserAvatar from '../Reasuble/UserAvatar';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	menuItemRow: {
+		height: '70px',
+		display: 'flex',
+		width: '100%',
+		padding: '5px',
+		borderBottom: '1px solid gray',
 		'&:hover': {
 			cursor: 'pointer',
-			backgroundColor: '#a9a9a9',
+			backgroundColor: 'lightgrey',
 		},
 	},
 }));
 
-const SubMenuItens = ({ row, menuItemName }) => {
+const SubMenuItens = ({
+	row,
+	menuItemName,
+	selectedRowsIds,
+	setSelectedRowsIds,
+}) => {
 	const styles = useStyles();
 	const { id, name, subject, owner, users } = row;
+	const [isHovering, setIsHovering] = useState(false);
+
+	const isSelected = selectedRowsIds.includes(id);
+
+	const handleCheck = (menuId) => {
+		if (selectedRowsIds.includes(menuId)) {
+			setSelectedRowsIds(selectedRowsIds.filter((item) => item !== menuId));
+		} else {
+			setSelectedRowsIds([...selectedRowsIds, menuId]);
+		}
+	};
+
 	return (
 		<Box
+			onMouseOver={() => {
+				setIsHovering(true);
+			}}
+			onMouseOut={() => {
+				setIsHovering(false);
+			}}
 			className={styles.menuItemRow}
-			height="70px"
-			display="flex"
-			width="100%"
-			style={{ padding: '5px', borderBottom: '1px solid gray' }}
+			backgroundColor={isSelected ? 'lightgrey' : undefined}
 		>
 			<Box
 				width="70px"
@@ -30,7 +55,11 @@ const SubMenuItens = ({ row, menuItemName }) => {
 				alignItems="center"
 				justifyContent="center"
 			>
-				<UserAvatar avatarInitial={owner} />
+				{isHovering || isSelected ? (
+					<Checkbox checked={isSelected} onClick={() => handleCheck(id)} />
+				) : (
+					<UserAvatar avatarInitial={owner} />
+				)}
 			</Box>
 			<Box
 				width="60%"
@@ -49,7 +78,7 @@ const SubMenuItens = ({ row, menuItemName }) => {
 			<Box width="20%">
 				<AvatarGroup max={3} spacing="small">
 					{users.map((user) => (
-						<UserAvatar avatarInitial={user} avatarClassName="orange" />
+						<UserAvatar avatarInitial={user} />
 					))}
 				</AvatarGroup>
 			</Box>
