@@ -5,13 +5,13 @@ const HeaderRight = () => {
 	return (
 		<Box style={{ margin: '10px' }}>
 			<Checkbox color="primary" />
-			<Button style={{ margin: '10px' }} variant="outlined">
+			<Button color="default" style={{ margin: '10px' }} variant="contained">
 				Atribuir
 			</Button>
-			<Button style={{ margin: '10px' }} variant="outlined">
+			<Button color="secondary" style={{ margin: '10px' }} variant="contained">
 				Arquivar
 			</Button>
-			<Button style={{ margin: '10px' }} variant="outlined">
+			<Button color="primary" style={{ margin: '10px' }} variant="contained">
 				Agendar
 			</Button>
 		</Box>

@@ -21,7 +21,10 @@ const App = () => {
 		palette: {
 			type: darkMode ? 'dark' : 'light',
 			primary: {
-				main: '#1259a4',
+				main: '#0078d4',
+			},
+			secondary: {
+				main: '#d45c00',
 			},
 		},
 	});

@@ -29,12 +29,12 @@ import { dark } from '@material-ui/core/styles/createPalette';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		backgroundColor: theme.palette.type,
+		backgroundColor: theme.palette.background.paper,
 		width: '100vw',
 		height: '100vh',
 	},
 	leftContainer: {
-		backgroundColor: theme.palette.type,
+		backgroundColor: theme.palette.background.default,
 		width: '100vw',
 	},
 	leftHeader: {
