@@ -17,7 +17,7 @@ const getMuiTheme = () =>
 	});
 
 const App = () => {
-	const [isAutenticaded, setIsAutenticaded] = useState(false);
+	const [isAutenticaded, setIsAutenticaded] = useState(true);
 
 	return (
 		<MuiThemeProvider theme={getMuiTheme()}>
