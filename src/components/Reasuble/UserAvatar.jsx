@@ -3,7 +3,7 @@ import React from 'react';
 
 const UserAvatar = ({ avatarInitial }) => {
 	return (
-		<Avatar style={{ cursor: 'pointer' }} alt="User Avatar">
+		<Avatar style={{ margin: '3px' }} alt="User Avatar">
 			{avatarInitial}
 		</Avatar>
 	);
