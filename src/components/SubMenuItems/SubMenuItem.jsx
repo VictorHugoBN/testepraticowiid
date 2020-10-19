@@ -47,7 +47,7 @@ const SubMenuItens = ({
 				setIsHovering(false);
 			}}
 			className={styles.menuItemRow}
-			backgroundColor={isSelected ? 'lightgrey' : undefined}
+			style={{ backgroundColor: isSelected ? 'lightgray' : undefined }}
 		>
 			<Box
 				width="70px"
