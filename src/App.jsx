@@ -14,18 +14,6 @@ const getMuiTheme = () =>
 				main: '#1259a4',
 			},
 		},
-		overrides: {
-			MUIDataTable: {
-				paper: {
-					height: '100%',
-					display: 'flex',
-					flexDirection: 'column',
-				},
-				responsiveBase: {
-					height: '100% !important',
-				},
-			},
-		},
 	});
 
 const App = () => {

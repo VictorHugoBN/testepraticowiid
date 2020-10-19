@@ -31,7 +31,8 @@ const MenuTree = () => {
 						<ListItemIcon>
 							<StarBorder />
 						</ListItemIcon>
-						<ListItemText primary="Caixa de entrada" />
+
+						<ListItemText primary="Caixa de entrada" style={{}}></ListItemText>
 					</ListItem>
 				</List>
 			</Collapse>

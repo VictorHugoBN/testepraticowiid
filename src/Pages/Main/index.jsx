@@ -20,9 +20,11 @@ import HeaderLeft from '../../components/HeaderLeft';
 import './style.css';
 import HeaderRight from '../../components/HeaderRight';
 import MenuTree from '../../components/MenuTree';
+import SubMenuItens from '../../components/SubMenuItems';
 
 const Main = () => {
 	const [menuList, setMenuList] = useState([{}, {}, {}]);
+	const [subMenuItens, setSubMenuItens] = useState([{}, {}]);
 
 	const useStyles = makeStyles((theme) => ({
 		root: {
@@ -105,8 +107,9 @@ const Main = () => {
 					</form>
 					<HeaderRight />
 				</Box>
-
-				<Box className={styles.rightContentArea}>oi tudo bem </Box>
+				{subMenuItens.map((item, key) => (
+					<SubMenuItens />
+				))}
 			</Grid>
 		</Grid>
 	);
