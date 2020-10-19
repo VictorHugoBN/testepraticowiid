@@ -10,6 +10,7 @@ import {
 	Typography,
 } from '@material-ui/core';
 import React, { useState } from 'react';
+import UserAvatar from '../Reasuble/UserAvatar';
 
 const HeaderLeft = () => {
 	const [anchorEl, setAnchorEl] = useState(null);
@@ -24,11 +25,7 @@ const HeaderLeft = () => {
 	return (
 		<>
 			<Button variant="text" onClick={handleOpenMenu}>
-				<Avatar
-					style={{ cursor: 'pointer' }}
-					alt="User Avatar"
-					src="https://www.w3schools.com/howto/img_avatar2.png"
-				/>
+				<UserAvatar avatarInitial="12" />
 			</Button>
 			<Menu
 				variant="selectedMenu"

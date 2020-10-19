@@ -2,6 +2,7 @@ import {
 	Avatar,
 	Box,
 	Button,
+	CircularProgress,
 	Container,
 	Divider,
 	FormControl,
@@ -19,41 +20,43 @@ import React, { useState, useEffect } from 'react';
 import HeaderLeft from '../../components/HeaderLeft';
 import './style.css';
 import HeaderRight from '../../components/HeaderRight';
-import MenuTree from '../../components/MenuTree';
-import SubMenuItens from '../../components/SubMenuItems';
+import MenuTree from '../../components/MenuTree/MenuTree';
+import SubMenuItens from '../../components/SubMenuItems/SubMenuItem';
+import { getAllInboxItem, getSideBarItems } from '../../services/services';
+import SubMenuItems from '../../components/SubMenuItems/SubMenuItems';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		backgroundColor: '#fff',
+		width: '100vw',
+		height: '100vh',
+	},
+	leftContainer: {
+		backgroundColor: '#f4f4f4',
+		width: '100vw',
+	},
+	leftHeader: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		padding: '10px',
+	},
+	rightContainer: {
+		padding: '10px',
+	},
+	menuTree: {
+		margin: '5px',
+	},
+	rightHeader: {
+		padding: '10px',
+	},
+	rightContentArea: {},
+}));
 
 const Main = () => {
-	const [menuList, setMenuList] = useState([{}, {}, {}]);
-	const [subMenuItens, setSubMenuItens] = useState([{}, {}]);
-
-	const useStyles = makeStyles((theme) => ({
-		root: {
-			backgroundColor: '#fff',
-			width: '100vw',
-			height: '100vh',
-		},
-		leftContainer: {
-			backgroundColor: '#f4f4f4',
-			width: '100vw',
-		},
-		leftHeader: {
-			display: 'flex',
-			justifyContent: 'space-between',
-			alignItems: 'center',
-			padding: '10px',
-		},
-		rightContainer: {
-			padding: '10px',
-		},
-		menuTree: {
-			margin: '5px',
-		},
-		rightHeader: {
-			padding: '10px',
-		},
-		rightContentArea: {},
-	}));
 	const styles = useStyles();
+
+	const [selectedId, setSelectedId] = useState(11);
 
 	return (
 		<Grid container className={styles.root}>
@@ -80,16 +83,12 @@ const Main = () => {
 				{/* Inicio do MenuList */}
 
 				<Box className={styles.menuTree}>
-					<List
-						component="nav"
-						subheader={
-							<ListSubheader component="div">Favoritos </ListSubheader>
-						}
-					>
-						{menuList.map((menuItem, key) => (
-							<MenuTree />
-						))}
-					</List>
+					<MenuTree
+						handleMenuItemChange={(id) => {
+							console.log(id);
+							setSelectedId(id);
+						}}
+					/>
 				</Box>
 
 				{/* Final do Meunulist */}
@@ -106,10 +105,8 @@ const Main = () => {
 						<TextField fullWidth="true" label="Pesquisa" variant="outlined" />
 					</form>
 					<HeaderRight />
+					<SubMenuItems id={selectedId} />
 				</Box>
-				{subMenuItens.map((item, key) => (
-					<SubMenuItens />
-				))}
 			</Grid>
 		</Grid>
 	);
