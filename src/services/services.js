@@ -6,4 +6,6 @@ export const getAllInboxItem = (id) =>
 	);
 
 export const getSideBarItems = () =>
-	axios.get(process.env.REACT_APP_API_URL_MENU);
+	axios.get(
+		`http://my-json-server.typicode.com/workinideas/vagafrontendteste/menus`
+	);
