@@ -15,17 +15,17 @@
  - Botão Arquivar - Os dados selecionados são dinamicamente removidos da tela.
  
  ## Tela de login 
-  [!Tela de login](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/tela%20de%20login.png)
+ ![Tela de login](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/tela%20de%20login.png)
  
  ## Tela inicial 
  ### Tema 'Light'
- [!Tema Light](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/tela%20inicial%20pt.png)
+ ![Tema Light](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/tela%20inicial%20pt.png)
  
  ### Tema 'Dark'
- [!Tema Dark](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/tela%20principal%20dark.png)
+ ![Tema Dark](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/tela%20principal%20dark.png)
  
  ## Seleção
- [!Selecionado](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/selecionadao.JPG)
+ ![Selecionado](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/selecionadao.JPG)
  
 
 
