@@ -20,7 +20,7 @@ const App = () => {
 						}}
 					/>
 				) : (
-					<Login onLogin={() => setIsAutenticaded(true)} />
+					<Login onLogin={() => setIsAutenticaded(!isAutenticaded)} />
 				)}
 			</Paper>
 		</MuiThemeProvider>

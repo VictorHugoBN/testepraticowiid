@@ -22,10 +22,16 @@ const HeaderLeft = () => {
 	const handleCloseMenu = (e) => {
 		setAnchorEl(null);
 	};
+
+	const handleLogout = () => {
+		localStorage.clear();
+		window.location.href = '/';
+	};
+
 	return (
 		<>
 			<Button variant="text" onClick={handleOpenMenu}>
-				<UserAvatar avatarInitial="12" />
+				<UserAvatar avatarInitial="OA" />
 			</Button>
 			<Menu
 				variant="selectedMenu"
@@ -34,7 +40,9 @@ const HeaderLeft = () => {
 				open={Boolean(anchorEl)}
 				onClose={handleCloseMenu}
 			>
-				<MenuItem onClick={handleOpenMenu}>Logout</MenuItem>
+				<MenuItem type="submit" onClick={handleLogout}>
+					Logout
+				</MenuItem>
 			</Menu>
 		</>
 	);

@@ -38,7 +38,7 @@ const Login = ({ onLogin }) => {
 					<LockOutlinedIcon />
 				</Avatar>
 				<Typography component="h1" variant="h5">
-					Sign in
+					Logar
 				</Typography>
 				<form className={classes.form} noValidate>
 					<TextField
@@ -64,7 +64,7 @@ const Login = ({ onLogin }) => {
 						className={classes.submit}
 						onClick={onLogin}
 					>
-						Sign In
+						Logar
 					</Button>
 				</form>
 			</Box>

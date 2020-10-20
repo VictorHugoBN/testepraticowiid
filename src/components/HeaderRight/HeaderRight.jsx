@@ -1,12 +1,18 @@
 import { Box, Button, Checkbox } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
+import {
+	BOTAO_ATRIBUIR,
+	BOTAO_ARQUIVAR,
+	BOTAO_AGENDAR,
+	LANGUAGES,
+} from '../../constants/languages';
 
-const HeaderRight = ({ onArchive }) => {
+const HeaderRight = ({ onArchive, language }) => {
 	return (
 		<Box style={{ margin: '10px' }}>
 			<Checkbox color="primary" />
 			<Button color="default" style={{ margin: '10px' }} variant="contained">
-				Atribuir
+				{BOTAO_ATRIBUIR[language]}
 			</Button>
 			<Button
 				onClick={onArchive}
@@ -14,10 +20,10 @@ const HeaderRight = ({ onArchive }) => {
 				style={{ margin: '10px' }}
 				variant="contained"
 			>
-				Arquivar
+				{BOTAO_ARQUIVAR[language]}
 			</Button>
 			<Button color="primary" style={{ margin: '10px' }} variant="contained">
-				Agendar
+				{BOTAO_AGENDAR[language]}
 			</Button>
 		</Box>
 	);

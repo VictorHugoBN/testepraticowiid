@@ -1,7 +1,6 @@
 import {
 	Box,
 	Divider,
-	FormControl,
 	Grid,
 	makeStyles,
 	Select,
@@ -13,17 +12,28 @@ import HeaderLeft from '../../components/HeaderLeft/HeaderLeft';
 import MenuTree from '../../components/MenuTree/MenuTree';
 import SubMenuItems from '../../components/SubMenuItems/SubMenuItems';
 import HeaderRight from '../../components/HeaderRight/HeaderRight';
-import { LABEL_PESQUISA, LANGUAGES } from '../../constants/languages';
+import {
+	LABEL_PESQUISA,
+	LANGUAGES,
+	LABEL_NOVO,
+} from '../../constants/languages';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		backgroundColor: theme.palette.background.paper,
 		width: '100vw',
 		height: '100vh',
+		display: 'flex',
+		flexDirection: 'row',
 	},
 	leftContainer: {
 		backgroundColor: theme.palette.background.default,
-		width: '100vw',
+		resize: 'horizontal',
+		overflow: 'auto',
+		display: 'flex',
+		flexDirection: 'column',
+		minWidth: '200px',
+		maxWidth: '500px',
 	},
 	leftHeader: {
 		display: 'flex',
@@ -33,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	rightContainer: {
 		padding: '10px',
+		width: '100%',
 	},
 	menuTree: {},
 	rightHeader: {
@@ -42,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 	rightContentArea: {},
 }));
 
-const Main = ({ handleDarkMode, darkMode }) => {
+const Main = ({ handleDarkMode, darkMode, onLogin }) => {
 	const styles = useStyles();
 	const [subMenuItens, setSubMenuItens] = useState([]);
 	const [language, setLanguage] = useState(LANGUAGES.PTBR);
@@ -60,23 +71,12 @@ const Main = ({ handleDarkMode, darkMode }) => {
 	};
 
 	return (
-		<Grid container className={styles.root}>
-			<Grid
-				container
-				className={styles.leftContainer}
-				xs={3}
-				direction="column"
-			>
+		<Box container className={styles.root}>
+			<Box container className={styles.leftContainer} xs={3} direction="column">
 				<Box className={styles.leftHeader}>
 					<HeaderLeft />
-					<Select
-						variant="standard"
-						value={language}
-						onChange={(e) => setLanguage(e.target.value)}
-					>
-						{Object.values(LANGUAGES).map((item) => (
-							<option value={item}> {item} </option>
-						))}
+					<Select value={LABEL_NOVO[language]}>
+						<option value={LABEL_NOVO[language]}>{LABEL_NOVO[language]}</option>
 					</Select>
 				</Box>
 				<Box mx={2}>
@@ -85,9 +85,9 @@ const Main = ({ handleDarkMode, darkMode }) => {
 				<Box className={styles.menuTree}>
 					<MenuTree handleChangeInbox={handleChangeInbox} />
 				</Box>
-			</Grid>
+			</Box>
 
-			<Grid
+			<Box
 				container
 				className={styles.rightContainer}
 				xs={9}
@@ -119,7 +119,7 @@ const Main = ({ handleDarkMode, darkMode }) => {
 						</Select>
 					</Box>
 
-					<HeaderRight onArchive={onArchive} />
+					<HeaderRight onArchive={onArchive} language={language} />
 
 					<SubMenuItems
 						id={selectedInboxId}
@@ -129,8 +129,8 @@ const Main = ({ handleDarkMode, darkMode }) => {
 						setSubMenuItens={setSubMenuItens}
 					/>
 				</Box>
-			</Grid>
-		</Grid>
+			</Box>
+		</Box>
 	);
 };
 
