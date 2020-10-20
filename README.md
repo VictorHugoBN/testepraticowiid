@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## O teste
 
-## Available Scripts
+O teste consiste em criar uma pequena aplicação, seguindo os itens abaixo:
 
-In the project directory, you can run:
+![](markup.png)
 
-### `yarn start`
+1. Utilizar VueJS ou ReactJS.
+2. Utilizar as melhores práticas/principios que você conhecer para que o código seja testável e reaproveitável.
+3. Os dados serão consumidos através de uma api externa.
+4. Utilizar globalização. (Adicionar algum botão para que possa alterar a linguagem).
+5. Utilizar tematização. (Adicionar algum botão para que possa escolher o tema: Dark ou Ligth).
+6. Criar uma tela de login simples
+   1. Somente usuário logado poder acessar a Main page.
+   2. Não é necessário validar credênciais, pode utilizar login fixo. (Ex. User: Admin, Pass: Admin).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Componentes / Comportamentos
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![](componentes.png)
 
-### `yarn test`
+1. O componente 1 deve:
+   1. Ao clicar apresentar um menu para que possa ser feito o Logout.
+2. O componente 2 deve:
+   1. Listar a arvore de menu a partir dos items obtidos pela api: http://my-json-server.typicode.com/workinideas/vagafrontendteste/menus
+      1. Exemplo:
+      - Menu
+        - subMenu
+        - subMenu
+      - Menu
+        - subMenu
+   2. Ao selecionar um item (subMenu - Caixa de entrada, por exemplo), deve atualizar a listagem representada pelo componente 4, com os itens relacionados ao subMenu.
+3. O componente 3 deve:
+   1. Ao clicar no botão "Arquivar" os itens selecionados do componente 4 devem ser removidos da listagem.
+4. O componente 4 deve:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   1. Apresentar os dados relacionados ao item selecionado no componente 2, através da api:
+      --> http://my-json-server.typicode.com/workinideas/vagafrontendteste/items/{id do subMenu}
+   1. Cada item (Card) deve apresentar as seguintes informações (Exemplo utilizando o primeiro item da imagem):
+      1. Name (José Ronaldo -> Primeiro texto)
+      2. Subject (Boa tarde, como vai você? -> Segundo texto)
+      3. Owner (OA -> Circulo maior com as iniciais)
+      4. Users (OA, OA, OA -> Três circulos menores com as iniciais)
+      5. OBS: As demais informações do Card podem ser fixas.
+   1. Quando o usuário passar o mouse sobre a linha, deve ser apresentada a opção de selecionar o item da lista (Apresentar um checkbox no lugar das iniciais do Owner).
+   1. Ao selecionar o item, todas as Iniciais devem ser apresentadas como opção de seleção para permitir multiplas escolhas.
+   1. Ao desmarcar todas as opções, o sistema deve voltar a apresentar as Iniciais.
+   1. OBS: Segue um exemplo visual do comportamento desejado extraido de um e-mail Office365:
 
-### `yarn build`
+      ![](barra-office365.gif)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Finalizando
