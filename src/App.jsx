@@ -6,7 +6,7 @@ import Login from './Pages/Login/Login';
 import getMuiTheme from './constants/theme';
 
 const App = () => {
-	const [isAutenticaded, setIsAutenticaded] = useState(true);
+	const [isAutenticaded, setIsAutenticaded] = useState(false);
 	const [darkMode, setDarkMode] = useState(false);
 
 	return (
