@@ -34,6 +34,7 @@ const SubMenuItems = ({
 			) : (
 				subMenuItens.map((item) => (
 					<SubMenuItem
+						key={subMenuItens.id}
 						row={item}
 						selectedRowsIds={selectedRowsIds}
 						setSelectedRowsIds={setSelectedRowsIds}

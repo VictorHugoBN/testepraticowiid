@@ -1,7 +1,6 @@
 import {
 	Box,
 	Divider,
-	Grid,
 	makeStyles,
 	Select,
 	Switch,
@@ -113,8 +112,10 @@ const Main = ({ handleDarkMode, darkMode, onLogin }) => {
 							value={language}
 							onChange={(e) => setLanguage(e.target.value)}
 						>
-							{Object.values(LANGUAGES).map((item) => (
-								<option value={item}> {item} </option>
+							{Object.values(LANGUAGES).map((item, index) => (
+								<option key={index} value={item}>
+									{item}
+								</option>
 							))}
 						</Select>
 					</Box>

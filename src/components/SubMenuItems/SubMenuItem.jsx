@@ -77,8 +77,8 @@ const SubMenuItens = ({
 			</Box>
 			<Box width="20%">
 				<AvatarGroup max={3} spacing="small">
-					{users.map((user) => (
-						<UserAvatar avatarInitial={user} />
+					{users.map((user, index) => (
+						<UserAvatar key={index} avatarInitial={user} />
 					))}
 				</AvatarGroup>
 			</Box>

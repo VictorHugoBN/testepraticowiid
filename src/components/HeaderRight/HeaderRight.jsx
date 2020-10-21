@@ -1,10 +1,9 @@
 import { Box, Button, Checkbox } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	BOTAO_ATRIBUIR,
 	BOTAO_ARQUIVAR,
 	BOTAO_AGENDAR,
-	LANGUAGES,
 } from '../../constants/languages';
 
 const HeaderRight = ({ onArchive, language }) => {

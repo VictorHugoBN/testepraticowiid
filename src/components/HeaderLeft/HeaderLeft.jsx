@@ -1,14 +1,4 @@
-import {
-	Avatar,
-	Box,
-	Button,
-	FormControl,
-	InputLabel,
-	Menu,
-	MenuItem,
-	Select,
-	Typography,
-} from '@material-ui/core';
+import { Button, Menu, MenuItem } from '@material-ui/core';
 import React, { useState } from 'react';
 import UserAvatar from '../Reasuble/UserAvatar';
 
