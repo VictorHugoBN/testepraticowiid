@@ -4,6 +4,8 @@
  
  - [ReactJS](https://reactjs.org/)
  - [Material-UI](https://material-ui.com/pt/)
+ - [Redux](https://redux.js.org/)
+ - [Redux Thunk](https://github.com/reduxjs/redux-thunk) -> async redux logic 
  
  ## Functionalities
  
