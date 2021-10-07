@@ -1,28 +1,24 @@
 import { Box, CircularProgress } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { getAllInboxItem } from '../../services/services';
+import { useDispatch, useSelector } from 'react-redux';
+
 import SubMenuItem from './SubMenuItem';
+import { getAllInboxItem } from '../../services/services';
+import { getAllInboxItemAction } from '../../actions/actions';
+import { useState } from 'react';
 
-const SubMenuItems = ({
-	id,
-	selectedRowsIds,
-	setSelectedRowsIds,
-	setSubMenuItens,
-	subMenuItens,
-}) => {
+const SubMenuItems = ({ id, selectedRowsIds, setSelectedRowsIds, setSubMenuItens, subMenuItens }) => {
+	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(true);
-
-	const loadInbox = async () => {
-		setLoading(true);
-		const response = await getAllInboxItem(id);
-		setLoading(false);
-
-		setSubMenuItens(response.data.subMenuItems);
-	};
+	const inboxItems = useSelector((state) => state.inboxItems);
 
 	useEffect(() => {
-		loadInbox();
+		const fetch = async () => {
+			setLoading(true);
+			await dispatch(getAllInboxItemAction(id));
+			setLoading(false);
+		};
+		fetch();
 	}, [id]);
 
 	return (
@@ -31,8 +27,8 @@ const SubMenuItems = ({
 				<Box display="flex" justifyContent="center" alignItems="center">
 					<CircularProgress size={80} />
 				</Box>
-			) : (
-				subMenuItens.map((item) => (
+			) : inboxItems.subMenuItems && inboxItems.subMenuItems.length > 0 ? (
+				inboxItems.subMenuItems.map((item) => (
 					<SubMenuItem
 						key={subMenuItens.id}
 						row={item}
@@ -40,7 +36,7 @@ const SubMenuItems = ({
 						setSelectedRowsIds={setSelectedRowsIds}
 					/>
 				))
-			)}
+			) : null}
 		</Box>
 	);
 };

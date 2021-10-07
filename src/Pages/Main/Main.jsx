@@ -1,21 +1,11 @@
-import {
-	Box,
-	Divider,
-	makeStyles,
-	Select,
-	Switch,
-	TextField,
-} from '@material-ui/core';
+import { Box, Divider, Select, Switch, TextField, makeStyles } from '@material-ui/core';
+import { LABEL_NOVO, LABEL_PESQUISA, LANGUAGES } from '../../constants/languages';
 import React, { useState } from 'react';
+
 import HeaderLeft from '../../components/HeaderLeft/HeaderLeft';
+import HeaderRight from '../../components/HeaderRight/HeaderRight';
 import MenuTree from '../../components/MenuTree/MenuTree';
 import SubMenuItems from '../../components/SubMenuItems/SubMenuItems';
-import HeaderRight from '../../components/HeaderRight/HeaderRight';
-import {
-	LABEL_PESQUISA,
-	LANGUAGES,
-	LABEL_NOVO,
-} from '../../constants/languages';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -52,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 	rightContentArea: {},
 }));
 
-const Main = ({ handleDarkMode, darkMode, onLogin }) => {
+const Main = () => {
 	const styles = useStyles();
 	const [subMenuItens, setSubMenuItens] = useState([]);
 	const [language, setLanguage] = useState(LANGUAGES.PTBR);
@@ -60,9 +50,7 @@ const Main = ({ handleDarkMode, darkMode, onLogin }) => {
 	const [selectedRowsIds, setSelectedRowsIds] = useState([]);
 
 	const onArchive = () => {
-		setSubMenuItens(
-			subMenuItens.filter((item) => !selectedRowsIds.includes(item.id))
-		);
+		setSubMenuItens(subMenuItens.filter((item) => !selectedRowsIds.includes(item.id)));
 	};
 
 	const handleChangeInbox = (id) => {
@@ -86,32 +74,15 @@ const Main = ({ handleDarkMode, darkMode, onLogin }) => {
 				</Box>
 			</Box>
 
-			<Box
-				container
-				className={styles.rightContainer}
-				xs={9}
-				direction="column"
-			>
+			<Box container className={styles.rightContainer} xs={9} direction="column">
 				<Box className={styles.rightHeader}>
-					<Box
-						display="flex"
-						justifyContent="space-between"
-						alignItems="center"
-					>
+					<Box display="flex" justifyContent="space-between" alignItems="center">
 						<Box width="90%">
-							<TextField
-								size="small"
-								fullWidth
-								label={LABEL_PESQUISA[language]}
-								variant="outlined"
-							/>
+							<TextField size="small" fullWidth label={LABEL_PESQUISA[language]} variant="outlined" />
 						</Box>
-						<Switch checked={darkMode} onChange={handleDarkMode} />
-						<Select
-							variant="standard"
-							value={language}
-							onChange={(e) => setLanguage(e.target.value)}
-						>
+						{/* 						<Switch checked={darkMode} onChange={handleDarkMode} />
+						 */}
+						<Select variant="standard" value={language} onChange={(e) => setLanguage(e.target.value)}>
 							{Object.values(LANGUAGES).map((item, index) => (
 								<option key={index} value={item}>
 									{item}

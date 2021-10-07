@@ -1,0 +1,2 @@
+export const GET_ALL_INBOX_ITEM = 'GET_ALL_INBOX_ITEM';
+export const GET_SIDE_BAR_ITEMS = 'GET_SIDE_BAR_ITEMS';
