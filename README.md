@@ -26,5 +26,6 @@
  ### 'Dark' Theme
  ![Dark Theme](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/tela%20principal%20dark.png)
  
- ## Selected
- ![Selected](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/selecionadao.JPG)
+ ## Selection
+ ![Selected](https://github.com/VictorHugoBN/testepraticowiid/blob/master/.gitImages/selecionao.JPG)
+ 
